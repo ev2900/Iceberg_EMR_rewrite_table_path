@@ -29,4 +29,4 @@ jobs:
           aws-region: us-east-1
           
       - name: Upload glue_iceberg_register_table.yaml to S3
-        run: aws s3 cp /home/runner/work/Iceberg_EMR_rewrite_table_path/Iceberg_EMR_rewrite_table_path/glue_iceberg_register_table.yaml s3://sharkech-public/misc-public/glue_iceberg_register_table.yaml
+        run: aws s3 cp /home/runner/work/Iceberg_EMR_rewrite_table_path/Iceberg_EMR_rewrite_table_path/emr_s_rewrite_table_path.yaml s3://sharkech-public/misc-public/emr_s_rewrite_table_path.yaml
