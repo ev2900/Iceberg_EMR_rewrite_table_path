@@ -29,10 +29,4 @@ jobs:
           aws-region: us-east-1
           
       - name: Upload glue_iceberg_register_table.yaml to S3
-        run: aws s3 cp /home/runner/work/Iceberg_Glue_register_table/Iceberg_Glue_register_table/glue_iceberg_register_table.yaml s3://sharkech-public/misc-public/glue_iceberg_register_table.yaml
-
-      - name: Upload 0_create_iceberg_table.py to S3
-        run: aws s3 cp /home/runner/work/Iceberg_Glue_register_table/Iceberg_Glue_register_table/0_create_iceberg_table.py s3://sharkech-public/misc-public/0_create_iceberg_table.py
-
-      - name: Upload 1_register_table.py to S3
-        run: aws s3 cp /home/runner/work/Iceberg_Glue_register_table/Iceberg_Glue_register_table/1_register_table.py s3://sharkech-public/misc-public/1_register_table.py
+        run: aws s3 cp /home/runner/work/Iceberg_EMR_rewrite_table_path/Iceberg_EMR_rewrite_table_path/glue_iceberg_register_table.yaml s3://sharkech-public/misc-public/glue_iceberg_register_table.yaml
