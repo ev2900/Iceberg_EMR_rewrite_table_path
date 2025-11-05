@@ -21,14 +21,14 @@ Resources:
         Enabled: true
         IdleTimeoutMinutes: 15               
       InitialCapacity:
-        Driver:
+        - Driver:
           InitialCapacityType: Driver
           InitialCapacityConfig:
             WorkerCount: 1
             WorkerConfiguration:
               Cpu: "4 vCPU"
               Memory: "16 GB"
-        Executor:
+        - Executor:
           InitialCapacityType: Executor
           InitialCapacityConfig:
             WorkerCount: 2
