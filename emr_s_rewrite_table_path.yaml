@@ -1,1 +1,40 @@
+Description: CloudFormation Deployment of EMR Serverless for Icberg rewrite_table_path procedure
+Resources:
+  #
+  # S3 Bucket
+  #
+  S3:
+    Type: AWS::S3::Bucket
 
+  #
+  # EMR Serverless application
+  #
+  EMRServerlessApplication:
+    Type: AWS::EMRServerless::Application
+    Properties:
+      Name: emr-serverless-app
+      ReleaseLabel: emr-7.10.0               
+      Type: Spark                            
+      AutoStartConfiguration:
+        Enabled: true
+      AutoStopConfiguration:
+        Enabled: true
+        IdleTimeoutMinutes: 15               
+      InitialCapacity:
+        Driver:
+          InitialCapacityType: Driver
+          InitialCapacityConfig:
+            WorkerCount: 1
+            WorkerConfiguration:
+              Cpu: "4 vCPU"
+              Memory: "16 GB"
+        Executor:
+          InitialCapacityType: Executor
+          InitialCapacityConfig:
+            WorkerCount: 2
+            WorkerConfiguration:
+              Cpu: "4 vCPU"
+              Memory: "16 GB"
+      MaximumCapacity:
+        Cpu: "32 vCPU"
+        Memory: "128 GB"
