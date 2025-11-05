@@ -23,16 +23,12 @@ Resources:
       InitialCapacity:
         - Key: Driver
           Value:
-            InitialCapacityType: Driver
-            InitialCapacityConfig:
               WorkerCount: 1
               WorkerConfiguration:
                 Cpu: "4 vCPU"
                 Memory: "16 GB"
         - Key: Executor
           Value:
-            InitialCapacityType: Executor
-            InitialCapacityConfig:
               WorkerCount: 2
               WorkerConfiguration:
                 Cpu: "4 vCPU"
