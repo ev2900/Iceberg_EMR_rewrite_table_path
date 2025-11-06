@@ -30,3 +30,6 @@ jobs:
           
       - name: Upload glue_iceberg_register_table.yaml to S3
         run: aws s3 cp /home/runner/work/Iceberg_EMR_rewrite_table_path/Iceberg_EMR_rewrite_table_path/emr_s_rewrite_table_path.yaml s3://sharkech-public/misc-public/emr_s_rewrite_table_path.yaml
+
+      - name: Upload rewrite_table_path.py to S3
+        run: aws s3 cp /home/runner/work/Iceberg_EMR_rewrite_table_path/Iceberg_EMR_rewrite_table_path/rewrite_table_path.py s3://sharkech-public/misc-public/rewrite_table_path.py
