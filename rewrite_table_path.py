@@ -22,7 +22,7 @@ spark = SparkSession.builder \
 
 query = f"""
 CALL glue_catalog.system.rewrite_table_path(
-  table => 'glue_catalog.iceberg.sampledataicebergtable',
+  table => 'glue_catalog.<database_name>.<table_name>',
   source_prefix => 's3://<s3_bucket_name>/<s3_file_path_to_iceberg_metadata_of_table_to_be_migrated>', # The existing prefix to be replaced. ex. 's3://iceberg-s3-biob6mn0znrc/iceberg/iceberg.db/sampledataicebergtable',
   target_prefix => 's3://<s3_bucket_name>/<s3_file_path_to_iceberg_metadata_where_the_table_will_be_migrated_to>', # The replacement prefix for source_prefix. ex. 's3://iceberg-s3-biob6mn0znrc-copy-to/iceberg/iceberg.db/sampledataicebergtable',
   staging_location => 's3://<s3_bucket_name>/<path_the_updated_metadata_to_be_written_to>')
