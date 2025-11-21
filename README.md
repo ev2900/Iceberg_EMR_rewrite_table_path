@@ -48,7 +48,7 @@ CALL glue_catalog.system.rewrite_table_path(
 
 Once you update the script you will need to upload / replace the generic script in the S3 bucket deployed via. the CloudFormation template.
 
-
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_1.png">
 
 ## Submit Spark Job
 
