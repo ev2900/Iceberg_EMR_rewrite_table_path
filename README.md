@@ -15,7 +15,6 @@ Launch the CloudFormation stack below to deploy an S3 bucket (with Iceberg JARs 
 > [!WARNING]
 > The CloudFormation stack creates several IAM roles that have ADMIN permissions. This is not appropriate for production deployments. Scope these roles down before using this CloudFormation in production.
 
-
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=iceberg-rewrite-table-path&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/emr_s_rewrite_table_path.yaml)
 
 In this example I will assume that you already have an Iceberg table created. For this example, the name of the table is ```sampledataicebergtable``` it is registered with the Glue Data Catalog under the database ```iceberg```
