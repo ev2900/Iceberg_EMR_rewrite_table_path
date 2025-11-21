@@ -193,7 +193,7 @@ Resources:
         Memory: "128 GB"
 
   #
-  # 
+  # EMR Studio IAM Role
   #
   EMRStudioExecutionRole:
     Type: AWS::IAM::Role
@@ -217,9 +217,10 @@ Resources:
                 Resource: '*'
 
   #
-  # EMR Serverless application
+  # EMR Studio
   #
-  Type: AWS::EMR::Studio
+  EMRStudio:
+    Type: AWS::EMR::Studio
     Properties:
       Name: 'EMRStudio_Iceberg'
       DefaultS3Location: !Join 
