@@ -1,4 +1,14 @@
 Description: CloudFormation Deployment of EMR Serverless for Icberg rewrite_table_path procedure
+
+Parameters:
+  DefaultVpcId:
+    Description: The ID of the default VPC in your AWS account.
+    Type: AWS::EC2::VPC::Id
+
+  DefaultSubnetId:
+    Type: AWS::EC2::Subnet::Id
+    Description: The ID of the default subnet to use.
+
 Resources:
   #
   # S3 Bucket
@@ -212,7 +222,7 @@ Resources:
             Version: '2012-10-17'
             Statement:
               - Effect: Allow
-                Action: 
+                Action:
                   - '*'
                 Resource: '*'
 
@@ -230,3 +240,8 @@ Resources:
           - '/emrstudio/'
       AuthMode: 'IAM'
       ServiceRole: !GetAtt LambdaExecutionRole.Arn
+      VpcId: !Ref DefaultVpcId
+      SubnetIds:
+        - !Ref DefaultSubnetId
+      EngineSecurityGroupId: 'sg-0211c851a9a24a7ad'
+      WorkspaceSecurityGroupId: 'sg-0211c851a9a24a7ad'
