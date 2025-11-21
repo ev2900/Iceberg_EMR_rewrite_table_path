@@ -84,4 +84,14 @@ On the submit job page we will configure our Spark Job submission. Update the fo
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_4.png">
 
-Press the **Submit job run** button
+Press the **Submit job run** button.
+
+You can check the status of the job, once it shows as status of _Success_
+
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_5.png">
+
+You can check the staging location S3 bucket. You will see the updated metadata files.
+
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_6.png">
+
+From this point you can copy the data files to this same folder and register the updated metadata with the Glue data catalog via. the ```register_table``` procedure. A GitHub repo with an example of running the ```register_table``` procedure can be found [HERE](https://github.com/ev2900/Iceberg_Glue_register_table)
