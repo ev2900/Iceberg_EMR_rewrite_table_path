@@ -18,12 +18,6 @@ In this example I will assume that you already have an Iceberg table created. Fo
 
 If you do not already have an iceberg table created. You can deploy the CloudFormation stack in the repo. [Iceberg_Glue_register_table](https://github.com/ev2900/Iceberg_Glue_register_table) and run the Glue script titled ```0 Create Iceberg Table```
 
-## Log into EMR Studio
-
-Navigate the EMR service page and then to studios and click on the studio access URL. 
-
-<img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_0.png">
-
 ## Update Spark Script
 
 We will submit the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py) calling the ```rewrite_table_path``` procedure via. the EMR studio UI. Before we submit the job we need to update the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py).
@@ -50,5 +44,22 @@ Once you update the script you will need to upload / replace the generic script 
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_1.png">
 
+## Log into EMR Studio
+
+Navigate the EMR service page and then to studios and click on the studio access URL. 
+
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_0.png">
+
 ## Submit Spark Job
+
+From the EMR Studio UI select the existing serverless application 
+
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_2.png">
+
+Then select submit job run
+
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_3.png">
+
+On the submit job page we will configure our Spark Job submission
+
 
