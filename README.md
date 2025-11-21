@@ -10,4 +10,6 @@ It is not possible to call the ```rewrite_table_path``` from AWS Glue. This exam
 
 # Example using EMR Serverless
 
+Launch the CloudFormation stack below to deploy ...
+
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=iceberg-rewrite-table-path&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/emr_s_rewrite_table_path.yaml)
