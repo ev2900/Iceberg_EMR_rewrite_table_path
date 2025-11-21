@@ -249,3 +249,27 @@ Resources:
         - !Ref DefaultSubnetId
       EngineSecurityGroupId: !Ref DefaultSecurityGroup
       WorkspaceSecurityGroupId: !Ref DefaultSecurityGroup
+
+  #
+  # EMR Serverless Runtime IAM Role
+  # 
+  EMRServerlessRunTimeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: emr-serverless.amazonaws.com
+            Action: "sts:AssumeRole"
+      Policies:
+        # Imporvement required - premissions need to be scoped down
+        - PolicyName: Admin
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - '*'
+                Resource: '*'
