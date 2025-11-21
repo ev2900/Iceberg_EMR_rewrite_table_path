@@ -13,7 +13,10 @@ It is not possible to call the ```rewrite_table_path``` from AWS Glue. This exam
 Launch the CloudFormation stack below to deploy an S3 bucket (with Iceberg JARs and scripts) downloaded, an EMR serverless application and an EMR studio.
 
 > [!WARNING]
-> The CloudFormation stack creates several IAM roles that have ADMIN permissions. This is not appropriate for production deployments. Scope these roles down before using this CloudFormation in production.
+> The CloudFormation stack creates IAM role(s) that have ADMIN permissions. This is not appropriate for production deployments. Scope these roles down before using this CloudFormation in production.
+
+> [!NOTE]
+> The EMR jobs this cloudformation stack deploys uses Iceberg version 1.10.0
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=iceberg-rewrite-table-path&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/emr_s_rewrite_table_path.yaml)
 
