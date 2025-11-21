@@ -223,10 +223,10 @@ Resources:
     Type: AWS::EMR::Studio
     Properties:
       Name: 'EMRStudio_Iceberg'
-      DefaultS3Location: !Join 
-        - '/'
-        - -'s3:/'
+      DefaultS3Location: !Join
+        - ''
+        - - 's3://'
           - !Ref S3
-          - 'emrstudio/'
+          - '/emrstudio/'
       AuthMode: 'IAM'
       ServiceRole: !GetAtt LambdaExecutionRole.Arn
