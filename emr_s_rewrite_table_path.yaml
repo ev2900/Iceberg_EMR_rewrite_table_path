@@ -9,7 +9,7 @@ Parameters:
     Type: AWS::EC2::Subnet::Id
     Description: The ID of the default subnet to use.
 
-   DefaultSecurityGroup:
+  DefaultSecurityGroup:
     Type: AWS::EC2::SecurityGroup::Id
     Description: The ID of the default security group to use.
 
