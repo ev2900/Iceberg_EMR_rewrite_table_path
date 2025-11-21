@@ -22,6 +22,22 @@ If you do not already have an iceberg table created. You can deploy the CloudFor
 
 We will submit the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py) calling the ```rewrite_table_path``` procedure via. the EMR studio UI. Before we submit the job we need to update the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py).
 
+Specifically in the Spark session we need to update 
+* ```<s3_bucket_name>``` with the name of the S3 bucket that has the source Iceberg table metadata
+
+For my example, my spark session is 
+
+```
+spark = SparkSession.builder \
+    .appName("IcebergIntegration") \
+    .config("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions") \
+    .config("spark.sql.catalog.glue_catalog", "org.apache.iceberg.spark.SparkCatalog") \
+    .config("spark.sql.catalog.glue_catalog.warehouse", "s3://iceberg-register-table-s3-vkkdzbwgrztp/iceberg/") \
+    .config("spark.sql.catalog.glue_catalog.catalog-impl", "org.apache.iceberg.aws.glue.GlueCatalog") \
+    .config("spark.sql.catalog.glue_catalog.io-impl", "org.apache.iceberg.aws.s3.S3FileIO") \
+    .getOrCreate()
+```
+
 Specifically in the Spark SQL query we need to update 
 * ```<database_name>.<table_name>```
 * ```source_prefix => 's3://<s3_bucket_name>/<s3_file_path_to_iceberg_metadata_of_table_to_be_migrated>'```
