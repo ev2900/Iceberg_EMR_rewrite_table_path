@@ -16,4 +16,8 @@ Launch the CloudFormation stack below to deploy an S3 bucket (with Iceberg JARs 
 
 In this example I will assume that you already have an Iceberg table created. For this example the name of the table is ```sampledataicebergtable``` it is registered with the Glue Data Catalog under the database ```iceberg```
 
+If you do not already have an iceberg table created. You can deploy the CloudFormation stack in the repo. [Iceberg_Glue_register_table](https://github.com/ev2900/Iceberg_Glue_register_table) and run the Glue script titled ```0 Create Iceberg Table```
 
+## Log into EMR Studio
+
+Nagivate the EMR service page and then to studios and click on the studio access URL. 
