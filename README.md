@@ -60,6 +60,10 @@ Then select submit job run
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_3.png">
 
-On the submit job page we will configure our Spark Job submission
+On the submit job page we will configure our Spark Job submission. Update the following aspects
+* Job name: ```rewrite_table_path```
+* Runtime role: Select ```iceberg-rewrite-table-path-EMRServerlessRunTimeRole-xxxx```
+* Script location: _Select the s3 path with the updated script from the first step_
+* Spark properties: key = ```--conf``` | value = ```spark.jars=s3://<s3_bucket_name>/jars/iceberg-aws-bundle-1.10.0.jar,s3://<s3_bucket_name>/jars/iceberg-spark-runtime-3.5_2.12-1.10.0.jar``` with ```<s3_bucket_name>``` replaced with the S3 bucket created by the CloudFormation template
 
-
+Press the **Submit job run** button
