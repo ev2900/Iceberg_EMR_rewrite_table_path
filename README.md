@@ -24,6 +24,8 @@ Navigate the EMR service page and then to studios and click on the studio access
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_0.png">
 
+## Update Spark Script
+
 We will submit the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py) calling the ```rewrite_table_path``` procedure via. the EMR studio UI. Before we submit the job we need to update the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py).
 
 Specifically in the Spark SQL query we need to update 
@@ -43,3 +45,10 @@ CALL glue_catalog.system.rewrite_table_path(
   staging_location => 's3://iceberg-migrate-to-bucket-fkjd43es/iceberg/iceberg.db/sampledataicebergtable/metadata')
 """
 ```
+
+Once you update the script you will need to upload / replace the generic script in the S3 bucket deployed via. the CloudFormation template.
+
+
+
+## Submit Spark Job
+
