@@ -14,16 +14,32 @@ Launch the CloudFormation stack below to deploy an S3 bucket (with Iceberg JARs 
 
 [![Launch CloudFormation Stack](https://sharkech-public.s3.amazonaws.com/misc-public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=iceberg-rewrite-table-path&templateURL=https://sharkech-public.s3.amazonaws.com/misc-public/emr_s_rewrite_table_path.yaml)
 
-In this example I will assume that you already have an Iceberg table created. For this example the name of the table is ```sampledataicebergtable``` it is registered with the Glue Data Catalog under the database ```iceberg```
+In this example I will assume that you already have an Iceberg table created. For this example, the name of the table is ```sampledataicebergtable``` it is registered with the Glue Data Catalog under the database ```iceberg```
 
 If you do not already have an iceberg table created. You can deploy the CloudFormation stack in the repo. [Iceberg_Glue_register_table](https://github.com/ev2900/Iceberg_Glue_register_table) and run the Glue script titled ```0 Create Iceberg Table```
 
 ## Log into EMR Studio
 
-Nagivate the EMR service page and then to studios and click on the studio access URL. 
+Navigate the EMR service page and then to studios and click on the studio access URL. 
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_0.png">
 
-We will submit the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py) calling the ```rewrite_table_path``` procedure via. the EMR studio UI. Before we submit the job we need to update the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py)
+We will submit the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py) calling the ```rewrite_table_path``` procedure via. the EMR studio UI. Before we submit the job we need to update the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py).
 
+Specifically in the Spark SQL query we need to update 
+* ```<database_name>.<table_name>```
+* ```source_prefix => 's3://<s3_bucket_name>/<s3_file_path_to_iceberg_metadata_of_table_to_be_migrated>'```
+* ``` source_prefix => 's3://<s3_bucket_name>/<s3_file_path_to_iceberg_metadata_of_table_to_be_migrated>'```
+* ```staging_location => 's3://<s3_bucket_name>/<path_the_updated_metadata_to_be_written_to>'```
 
+For my example, the query is 
+
+```
+query = f"""
+CALL glue_catalog.system.rewrite_table_path(
+  table => 'glue_catalog.iceberg.sampledataicebergtable',
+  source_prefix => 's3://iceberg-register-table-s3-vkkdzbwgrztp/iceberg/iceberg.db/sampledataicebergtable/metadata',
+  target_prefix => 's3://iceberg-migrate-to-bucket-fkjd43es/iceberg/iceberg.db/sampledataicebergtable/metadata',
+  staging_location => 's3://iceberg-migrate-to-bucket-fkjd43es/iceberg/iceberg.db/sampledataicebergtable/metadata')
+"""
+```
