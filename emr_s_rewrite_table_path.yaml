@@ -239,7 +239,7 @@ Resources:
           - !Ref S3
           - '/emrstudio/'
       AuthMode: 'IAM'
-      ServiceRole: !GetAtt LambdaExecutionRole.Arn
+      ServiceRole: !GetAtt EMRStudioExecutionRole.Arn
       VpcId: !Ref DefaultVpcId
       SubnetIds:
         - !Ref DefaultSubnetId
