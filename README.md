@@ -21,3 +21,9 @@ If you do not already have an iceberg table created. You can deploy the CloudFor
 ## Log into EMR Studio
 
 Nagivate the EMR service page and then to studios and click on the studio access URL. 
+
+<img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_0.png">
+
+We will submit the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py) calling the ```rewrite_table_path``` procedure via. the EMR studio UI. Before we submit the job we need to update the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py)
+
+
