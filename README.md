@@ -50,8 +50,8 @@ For my example, the query is
 query = f"""
 CALL glue_catalog.system.rewrite_table_path(
   table => 'glue_catalog.iceberg.sampledataicebergtable',
-  source_prefix => 's3://iceberg-register-table-s3-vkkdzbwgrztp/iceberg/iceberg.db/sampledataicebergtable/metadata',
-  target_prefix => 's3://iceberg-migrate-to-bucket-fkjd43es/iceberg/iceberg.db/sampledataicebergtable/metadata',
+  source_prefix => 's3://iceberg-register-table-s3-vkkdzbwgrztp/iceberg/iceberg.db/sampledataicebergtable',
+  target_prefix => 's3://iceberg-migrate-to-bucket-fkjd43es/iceberg/iceberg.db/sampledataicebergtable',
   staging_location => 's3://iceberg-migrate-to-bucket-fkjd43es/iceberg/iceberg.db/sampledataicebergtable/metadata')
 """
 ```
