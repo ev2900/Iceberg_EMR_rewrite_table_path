@@ -191,3 +191,41 @@ Resources:
       MaximumCapacity:
         Cpu: "32 vCPU"
         Memory: "128 GB"
+
+  #
+  # 
+  #
+  EMRStudioExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: elasticmapreduce.amazonaws.com
+            Action: "sts:AssumeRole"
+      Policies:
+        # Imporvement required - premissions need to be scoped down
+        - PolicyName: Admin
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - '*'
+                Resource: '*'
+
+  #
+  # EMR Serverless application
+  #
+  Type: AWS::EMR::Studio
+    Properties:
+      Name: 'EMRStudio_Iceberg'
+      DefaultS3Location: !Join 
+        - ''
+        - -'s3://'
+          - !Ref S3
+          - '/emrstudio/'
+      AuthMode: 'IAM'
+      ServiceRole: !GetAtt LambdaExecutionRole.Arn
