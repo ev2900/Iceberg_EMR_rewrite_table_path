@@ -247,5 +247,5 @@ Resources:
       VpcId: !Ref DefaultVpcId
       SubnetIds:
         - !Ref DefaultSubnetId
-      EngineSecurityGroupId: 'sg-0211c851a9a24a7ad'
-      WorkspaceSecurityGroupId: 'sg-0211c851a9a24a7ad'
+      EngineSecurityGroupId: !Ref DefaultSecurityGroup
+      WorkspaceSecurityGroupId: !Ref DefaultSecurityGroup
