@@ -1,8 +1,8 @@
 # Iceberg EMR Serverless - rewrite_table_path
 
-<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-000-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-0000-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-000-green">
+<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-57-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-0000-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-000-green">
 
-As of Apache Iceberg version 1.9.0 a procedure ```rewrite_table_path``` was added. This procedure will update the absolute path reference in the Iceberg metadata files and stage this update copy (of the metadata files) in preparation for table migration. 
+As of Apache Iceberg version 1.9.0 a procedure ```rewrite_table_path``` was added. This procedure will update the absolute path reference in the Iceberg metadata files and stage this update copy (of the metadata files) in preparation for table migration.
 
 If you have a scenario where you need to move an Iceberg table from one S3 bucket to another this procedure is required to updated the absolute path references from the previous S3 bucket name to the new S3 bucket name.
 
@@ -28,10 +28,10 @@ If you do not already have an iceberg table created. You can deploy the CloudFor
 
 We will submit the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py) calling the ```rewrite_table_path``` procedure via. the EMR studio UI. Before we submit the job we need to update the [spark job](https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/rewrite_table_path.py).
 
-Specifically in the Spark session we need to update 
+Specifically in the Spark session we need to update
 * ```<s3_bucket_name>``` with the name of the S3 bucket that has the source Iceberg table metadata
 
-For my example, my spark session is 
+For my example, my spark session is
 
 ```
 spark = SparkSession.builder \
@@ -44,13 +44,13 @@ spark = SparkSession.builder \
     .getOrCreate()
 ```
 
-Specifically in the Spark SQL query we need to update 
+Specifically in the Spark SQL query we need to update
 * ```<database_name>.<table_name>```
 * ```source_prefix => 's3://<s3_bucket_name>/<s3_file_path_to_iceberg_metadata_of_table_to_be_migrated>'```
 * ``` source_prefix => 's3://<s3_bucket_name>/<s3_file_path_to_iceberg_metadata_of_table_to_be_migrated>'```
 * ```staging_location => 's3://<s3_bucket_name>/<path_the_updated_metadata_to_be_written_to>'```
 
-For my example, the query is 
+For my example, the query is
 
 ```
 query = f"""
@@ -68,13 +68,13 @@ Once you update the script you will need to upload / replace the generic script 
 
 ## Log into EMR Studio
 
-Navigate the EMR service page and then to studios and click on the studio access URL. 
+Navigate the EMR service page and then to studios and click on the studio access URL.
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_0.png">
 
 ## Submit Spark Job
 
-From the EMR Studio UI select the existing serverless application 
+From the EMR Studio UI select the existing serverless application
 
 <img width="700" alt="quick_setup" src="https://github.com/ev2900/Iceberg_EMR_rewrite_table_path/blob/main/README/readme_2.png">
 
