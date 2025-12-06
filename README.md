@@ -1,6 +1,6 @@
 # Iceberg EMR Serverless - rewrite_table_path
 
-<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-57-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-265-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-011-green">
+<img width="275" alt="map-user" src="https://img.shields.io/badge/cloudformation template deployments-63-blue"> <img width="85" alt="map-user" src="https://img.shields.io/badge/views-265-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-011-green">
 
 As of Apache Iceberg version 1.9.0 a procedure ```rewrite_table_path``` was added. This procedure will update the absolute path reference in the Iceberg metadata files and stage this update copy (of the metadata files) in preparation for table migration.
 
